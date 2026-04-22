@@ -1,106 +1,196 @@
- *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+/* RESET GERAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
-/* FUNDO */
 body{
-background-color:#111;
-color:white;
+    background-color: #111;
+    color: white;
 }
 
-/* MENU */
+/* MENU SUPERIOR */
 header{
-background-color:black;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
+    background-color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.img-logo {
+    height: 60px;
+    width: auto;
+}
+
+.logo h1 {
+    font-size: 22px;
+    color: white;
+    text-transform: uppercase;
 }
 
 .logo span{
-color:gold;
+    color: gold;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-margin-left:30px;
-font-size:18px;
+    color: white !important;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
 }
 
 nav a:hover{
-color:gold;
+    color: gold !important;
 }
 
-/* PRIMEIRA IMAGEM */
+.fa-whatsapp { color: #25d366; }
+.fa-instagram { color: #e4405f; }
+
+/* BANNER PRINCIPAL */
 .secao-img1{
-width:100%;
-height:100vh;
-
-background-image: url("leaoking.jpg.jpg");
-background-size: cover;
-background-position: center 10%;
-background-repeat: no-repeat;
-
-display:flex;
-align-items:center;
-padding:60px;
-}
-
-/* TEXTO */
-.texto{
-max-width:500px;
+    width: 100%;
+    height: 100vh;
+    background-image: url("leaoking.jpg.jpg");
+    background-size: cover;
+    background-position: center 10%;
+    display: flex;
+    align-items: center;
+    padding: 60px;
 }
 
 .texto h2{
-font-size:50px;
-margin-bottom:20px;
+    font-size: 45px;
+    margin-bottom: 20px;
 }
 
-.texto p{
-font-size:22px;
-margin-bottom:30px;
-}
-
-/* BOTÃO */
 button{
-background:#f7c948;
-border:none;
-padding:15px 35px;
-font-size:18px;
-border-radius:10px;
-cursor:pointer;
-font-weight:bold;
+    background: #f7c948;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 button:hover{
-background:#e6b63f;
+    background: #e6b63f;
+    transform: scale(1.05);
 }
 
-/* SEGUNDA IMAGEM */
-.secao-img2{
-width:100%;
-height:100vh;
+/* SEÇÃO DE PRODUTOS */
+#nossos-produtos {
+    padding-top: 50px;
+    background-color: #111;
+}
 
-background-image: url("leao2.jpg.jpg");
-background-size: cover 20%;
-background-position: center 10%;
-background-repeat: no-repeat 50%;
+.produtos-titulo {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.produtos-titulo li {
+    font-size: 30px;
+    font-weight: bold;
+    color: gold;
+    text-transform: uppercase;
+}
+
+/* CONTAINER AJUSTADO */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Espaço reduzido entre cards menores */
+    max-width: 1100px; /* Container um pouco mais estreito para centralizar melhor os itens menores */
+    margin: 0 auto;
+    padding-bottom: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+/* CARDS REDUZIDOS (Tamanho aproximado de metade do original) */
+.card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    /* Reduzi a largura para caberem 5 menores com folga */
+    width: 180px; 
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: gold;
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 160px; /* Altura fixa para manter todas as fotos iguais */
+    object-fit: cover; /* Corta a imagem sem distorcer se elas tiverem tamanhos diferentes */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 15px; /* Fonte menor para combinar com o card */
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.preco {
+    font-size: 16px !important;
+    font-weight: bold;
+    color: gold !important;
+}
+
+/* FUNDO */
+.secao-img2{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("leao2.jpg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0,0,0,0.6);
+    background-blend-mode: darken; 
+    padding-top: 30px;
 }
 
 /* RODAPÉ */
 footer{
-text-align:center;
-padding:40px;
-background:black;
-}
-
-footer a{
-color:gold;
-text-decoration:none;
-display:block;
-margin-top:10px;
+    text-align: center;
+    padding: 30px;
+    background: #000000;
 }

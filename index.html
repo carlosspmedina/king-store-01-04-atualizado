@@ -122,5 +122,69 @@
     <p>&copy; 2026 King Store - Todos os direitos reservados.</p>
 </footer>
 
+<div id="modal-produto" style="display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px);">
+    <div style="background-color: #1a1a1a; margin: 10% auto; padding: 20px; border: 2px solid gold; width: 80%; max-width: 350px; border-radius: 15px; text-align: center; position: relative; color: white;">
+        <span id="fechar-x" style="position: absolute; right: 15px; top: 5px; color: gold; font-size: 30px; cursor: pointer;">&times;</span>
+        <img id="modal-img" src="" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+        <h2 id="modal-titulo" style="font-size: 20px; color: gold;"></h2>
+        <p id="modal-preco" style="font-size: 22px; font-weight: bold; margin: 10px 0;"></p>
+        <button style="width: 100%; background: gold; color: black; border: none; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 5px;">Finalizar Pedido</button>
+    </div>
+</div>
+
+<script>
+    // --- ADICIONADO: Alerta de Data e Hora ao carregar ---
+    window.onload = function() {
+        const dataAtual = new Date();
+        const formatoOpcoes = { 
+            day: '2-digit', month: '2-digit', year: 'numeric', 
+            hour: '2-digit', minute: '2-digit', second: '2-digit' 
+        };
+        const dataHoraFormatada = dataAtual.toLocaleString('pt-BR', formatoOpcoes);
+        alert("Bem-vindo à King Store!\n\nData e Hora do acesso:\n" + dataHoraFormatada);
+    };
+
+    // Pegamos os elementos da janelinha
+    const modal = document.getElementById("modal-produto");
+    const modalImg = document.getElementById("modal-img");
+    const modalTitulo = document.getElementById("modal-titulo");
+    const modalPreco = document.getElementById("modal-preco");
+    const btnFechar = document.getElementById("fechar-x");
+
+    // Selecionamos todas as fotos das camisetas dentro dos seus cards
+    const fotos = document.querySelectorAll(".card img");
+
+    // Para cada foto, adicionamos o evento de clique
+    fotos.forEach(img => {
+        img.style.cursor = "pointer"; // Garante que mostre a mãozinha do mouse
+        
+        img.onclick = function() {
+            // Buscamos os textos que estão no mesmo card da foto
+            const pai = img.parentElement;
+            const tituloCard = pai.querySelector("h2").innerText;
+            const precoCard = pai.querySelector(".preco").innerText;
+
+            // 'Injetamos' as informações na janela modal
+            modalImg.src = img.src;
+            modalTitulo.innerText = tituloCard;
+            modalPreco.innerText = precoCard;
+
+            // Mostramos a janela mudando o estilo de 'none' para 'block'
+            modal.style.display = "block";
+        };
+    });
+
+    // Função para fechar no X
+    btnFechar.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    // Função para fechar se clicar fora da caixa
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
 </body>
 </html>
